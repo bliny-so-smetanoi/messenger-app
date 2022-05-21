@@ -1,10 +1,11 @@
 ﻿using MessengerApplication.Dtos;
 using MessengerApplication.Parameters;
 using MessengerApplication.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MessengerApplication.Controllers;
-
+[EnableCors("CorsPolicy")]
 [ApiController]
 [Route("/v1/api/message/")]
 public class MessageController : ControllerBase

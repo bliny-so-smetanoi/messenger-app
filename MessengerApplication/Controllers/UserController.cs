@@ -1,9 +1,11 @@
 ﻿using MessengerApplication.Models;
 using MessengerApplication.Parameters;
 using MessengerApplication.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MessengerApplication.Controllers;
+[EnableCors("CorsPolicy")]
 [ApiController]
 [Route("/v1/api/users/")]
 public class UserController : ControllerBase
