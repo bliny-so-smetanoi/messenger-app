@@ -20,6 +20,7 @@ public class MessageController : ControllerBase
    [HttpPost("create")]
    public async Task<IActionResult> CreateMessage(CreateMessageParameter parameter)
    {
+
       var message = new CreateMessageDto
       {
          ChatId = parameter.ChatId,

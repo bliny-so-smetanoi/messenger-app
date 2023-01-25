@@ -33,6 +33,26 @@ public class ChatsService
         return chats;
     }
 
+    public async Task<string> GetRecipientId(string sender, string chatId)
+    {      
+        var chat = _chats.Find(x => x.Id.Equals(chatId)).FirstOrDefault();
+
+        Console.WriteLine(chat);
+        if(chat is not null) {
+            if (chat.Users[0].Id != sender)
+            {
+                return chat.Users[0].Id;
+            } else
+            {
+                return chat.Users[1].Id;
+            }
+        }
+        else
+        {
+            throw new ArgumentException("No chat exists");
+        }
+    }
+
     public async Task CreateChatAsync(CreateChatDto createChatDto)
     {
         FilterDefinition<Chat> filterOne = (Builders<Chat>.Filter.Eq("Users.0.UserId", createChatDto.Initiator)

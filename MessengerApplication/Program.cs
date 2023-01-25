@@ -1,3 +1,4 @@
+using MessengerApplication.Hubs;
 using MessengerApplication.Models;
 using MessengerApplication.Services;
 
@@ -36,20 +37,29 @@ builder.Services.AddScoped<UsersService>();
 builder.Services.AddScoped<DatabaseProviderService>();
 builder.Services.AddScoped<ChatsService>();
 builder.Services.AddScoped<MessagesService>();
+builder.Services.AddSignalR();
+builder.Services.AddRouting();
+builder.Services.AddMemoryCache();
 
 var app = builder.Build();
 
-// // Configure the HTTP request pipeline.
-// if (app.Environment.IsDevelopment())
-// {
-//     app.UseSwagger();
-//     app.UseSwaggerUI();
-// }
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.UseHttpsRedirection();
-app.UseCors("CorsPolicy");
-app.UseAuthorization();
 
-app.MapControllers();
+app.UseAuthorization();
+app.UseRouting();
+app.UseCors("CorsPolicy");
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+    endpoints.MapHub<ChatHub>("/chat");
+});
+
 
 app.Run();
