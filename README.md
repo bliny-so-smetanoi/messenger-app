@@ -2,7 +2,7 @@ Project information
 -------------------
 
 Name: Messenger Application REST API (Web Application)\
-Stack: ASP.NET Core 6 (Web API), MongoDB, Docker\
+Stack: ASP.NET Core 6 (Web API), MongoDB, SignalR, Docker\
 Language: C#
 
 
@@ -11,7 +11,7 @@ Developers
 Akezhan Issadilov\
 Contact information: akezhan.issadilov@gmail.com
 
-Copyright (c) 2022, Akezhan Issadilov <akezhan.issadilov@gmail.com>
+Copyright (c) 2023, Akezhan Issadilov <akezhan.issadilov@gmail.com>
 
 Permission to use, copy, modify, and/or distribute this software for any
 purpose with or without fee is hereby granted, provided that the above
